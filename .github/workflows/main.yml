@@ -56,4 +56,5 @@ jobs:
             # Deploy application
             npm install
             npm run build
-            pm2 restart all
+            pm2 list | grep soSOL-FE && pm2 delete all || echo "No existing processes"
+            pm2 start "npm run preview" --name "soSOL-FE"
